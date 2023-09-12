@@ -1,0 +1,316 @@
+.custom-navbar {
+    background-color: azure; /* Agoda's orange color */
+}
+.custom-navbar .navbar-brand img {
+    color: black; /* Text color for the brand */
+    width: 100px;
+    height: 35px;
+}
+.custom-navbar .navbar-nav .nav-link {
+    color: black; /* Text color for navigation links */
+}
+.custom-navbar .navbar-nav .nav-link:hover {
+    color: #ffab40; /* Hover color for navigation links */
+}
+.covid{
+    background-color: rgb(253, 238, 230);
+}
+
+.home-cover{
+  background-image: url("../img/Beautiful-Beach.jpg");
+  height: 36vh;
+  width: 100%;
+  background-position: center;
+  position: relative;
+  text-align: center;
+}
+
+.home-cover p{
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    color: white;
+}
+
+.home-cover .nav-btn{
+    position: absolute;
+    top: 120px;
+    left: 0;
+    right: 0;
+    color: black;
+    z-index: 1;
+}
+
+.home-cover .search-nav{
+    position: absolute;
+    top: 150px;
+    left: 0;
+    right: 0;
+}
+
+.search-nav .card{
+    border-radius: 25px;
+}
+
+
+.search-nav .card-body{
+    background-color: #f8f7f9;
+    border-radius: 25px;
+    
+}
+
+.search-nav .search-border{
+    border: 1px solid;
+    border-color: gainsboro!important;
+}
+
+.fa-search, .fa-calendar-check{
+    color: grey;
+    font-size: 20px;
+}
+
+.vertical-line{
+    font-size: 30px;
+    font-weight:lighter;
+}
+
+.search-btn-travel, .search-btn-resturant{
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 30%;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.bundle span{
+    float: left;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.fa-calendar{
+    position: absolute;
+    left: 15px;
+    font-size: 20px;
+    color: gray;
+}
+
+.t-date-info-title{
+    margin-top: 5px;
+    margin-left: 30px;
+    color: black;
+    opacity: 0.7!important;
+    font-size: 15px!important;
+}
+
+.t-datepicker{
+    border: 0.1px solid gainsboro;
+    border-radius: 5px;
+}
+
+.form-control:focus,.form-select:focus {
+    box-shadow: none; 
+    outline: none;
+}
+
+.t-date-check-in span,.t-date-check-out span{
+    font-size: 17px;
+    opacity: 0.9;
+}
+
+/* Style the custom dropdown container */
+.custom-dropdown{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    width: 100%;
+    overflow-y: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* Style the guest options */
+.guest-option{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Style the count controls (buttons and count) */
+.count-controls {
+    display: flex;
+    align-items: center;
+}
+
+
+.count{
+    margin: 0 10px;
+}
+
+.increment, .decrement{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+.btn-active {
+    border: 0px ;
+    border-bottom: 4px solid rgb(83, 146, 249)!important;
+    border-radius: 0%;
+    color:rgb(83, 146, 249)
+    
+}
+
+
+.dropdown-menu {
+    position: absolute;
+    top: 92%;
+    left: 0;
+    display: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    padding: 10px;
+    z-index: 1;
+    width: 100%;
+}
+
+.passenger-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.label {
+    flex: 1;
+    margin-right: 10px;
+    text-align: left;
+}
+
+.count {
+    flex: 1;
+    text-align: center;
+}
+
+.passenger-dropdown.open .dropdown-menu {
+    display: block;
+}
+
+  .img-card {
+      position: relative;
+    }
+  
+  .img-card img{
+      height: 300px;
+      width: 100%;
+  }
+  
+  .textstyle{
+      text-decoration: none;
+  }
+  
+  
+  .available{
+      text-align: end;
+  }
+  
+  .input-border{
+      border-left: 0;
+  }
+  
+  
+  .details {
+      height: 50px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+.btn-money{
+    position: relative;
+    top: -45px;
+    left: 10px;
+}
+
+.btn-mores{
+    float: right;
+    margin-top: -46px;
+    margin-right: 12px;
+}
+/* Initial state: fully transparent */
+.fade {
+    opacity: 0;
+    transition: opacity 0.5s; /* Define a transition for the opacity property */
+}
+
+/* State after loading: fully visible */
+.fade.loaded {
+    opacity: 1;
+}
+
+/* State for fade-out effect */
+.fade.fade-out {
+    opacity: 0;
+}
+
+
+.section {
+    background-color: #f5f5f5;
+    padding: 30px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.photo-card {
+    border: none;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.photo-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.description {
+    background-color: #fff;
+    padding: 20px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.facility-titles {
+    background-color: #fff;
+    padding: 20px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.facility-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.facility-list li::before {
+    content: "\2713"; /* Unicode checkmark character */
+    margin-right: 10px;
+    color: #007bff; /* Blue color for the marker */
+}
