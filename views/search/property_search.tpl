@@ -1,40 +1,41 @@
-<nav class="navbar-light bg-light">
 
-    <form class="navbar-form container" action="/search/hotellist" method="get">
+<div class=" bg-rent py-3">
+
+    <div class="container">
         <div class="row">
             <!-- First Search Bar -->
-            <div class="col-3">
+            <div class="col-lg-3 col-12">
                 <div class="input-group py-2">
-                    <div class="input-group-append bg-white">
-                        <button class="btn py-2 rounded-0 rounded-start border-secondary border-end-0 search-border"
+                    <div class="input-group-append bg-white  rounded-start">
+                        <button class="btn py-2 rounded-0 rounded-start border-0 search-border"
                             type="button" id="search-button"><i class="fas fa-search"></i></button>
                     </div>
                     <input type="text"
-                        class="form-control py-2 border border-secondary border-start-0 search-border"
+                        class="form-control py-2 border-0 search-border"
                         placeholder="Enter a Destination or Property" aria-label="Search"
                         aria-describedby="search-button" name="destination" id="destination">
                 </div>
-            </div>
+             </div>
 
             <!-- Second Search Bar -->
-            <div class="col-5 mt-1">
-                <div class="t-datepicker">
+            <div class="col-lg-5 col-12 mt-1">
+                <div class="t-datepicker border-0">
                     <div class="t-check-in bg-white py-1"></div>
                     <div class="t-check-out bg-white py-1"></div>
                 </div>
             </div>
 
             <!-- Third Search Bar -->
-            <div class="col-3 mt-2">
+            <div class="col-lg-3 col-12 mt-2">
                 <div class="input-group">
                     <!-- Input field for number of guests -->
-                    <div class="input-group-append bg-white">
+                    <div class="input-group-append bg-white rounded-start">
                         <button
-                            class="btn py-2 rounded-0 rounded-start border-secondary border-end-0 search-border"
+                            class="btn py-2 border-0 search-border"
                             type="button" id="search-button"><i class="fa-solid fa-users"></i></button>
                     </div>
                     <input autocomplete="off"
-                        class="form-control py-2 border-secondary search-border border-start-0"
+                        class="form-control py-2 border-0 search-border rounded-end "
                         placeholder="Guests" aria-label="Guests" id="guests-input">
                     <!-- Dropdown for selecting the number of guests -->
                     <div class="custom-dropdown container">
@@ -76,12 +77,13 @@
             </div>
 
             <div class="col mt-2">
-                <button class="btn btn-outline-primary w-100" id="searchButton">SEARCH</button>
+                <button class="btn btn-light text-dark w-100" id="fetch-button">SEARCH</button>
             </div>
         </div>
 
 
-    </form>
+    </div>
 
     </div>
-</nav>
+</div>
+

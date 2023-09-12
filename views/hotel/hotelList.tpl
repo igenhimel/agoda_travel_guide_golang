@@ -4,8 +4,8 @@
 {{template "partials/nav.tpl" .}}
 {{template "search/property_search.tpl" .}}
 
-<section class="container mt-3" id="imageContainer">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 bedroomVillacard">
+<section class="container mt-3">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 bedroomVillacard" id="hotel-list">
         {{ range.Hotel.Data }}
         <div class="col">
           <div class="card h-100">

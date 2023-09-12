@@ -2,12 +2,13 @@
 
 {{ if .Error }}
 <div id="error-alert" class="fixed-top d-flex justify-content-center align-items-center" style="height: 100vh; background-color: rgba(0, 0, 0, 0.5); z-index: 999;">
-    <div class="alert alert-light alert-dismissible fade show lead" style="max-width: 400px; text-align: center; padding: 50px; border-radius: 5px; position: relative;">
+    <div class="alert alert-light alert-dismissible show" style="max-width: 400px; text-align: center; padding: 50px; border-radius: 5px; position: relative;">
         {{ .Error }}
         <button id="close-error" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 </div>
 {{ end }}
+
 
 
 

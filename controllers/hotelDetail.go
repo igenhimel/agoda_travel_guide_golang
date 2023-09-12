@@ -75,7 +75,7 @@ func GetDescription(idDetail, languageCode string) (string, error) {
         return "", err
     }
 
-    req.Header.Add("X-RapidAPI-Key", "3ad041d245msh9e23b1e8792896cp1fbc15jsn5e20851b7ca7")
+    req.Header.Add("X-RapidAPI-Key", "8c45aa97c7msh56eb8adeff6c7fbp15f018jsn948481d80bee")
     req.Header.Add("X-RapidAPI-Host", "booking-com13.p.rapidapi.com")
 
     res, err := http.DefaultClient.Do(req)
@@ -118,7 +118,7 @@ func GetPhotoURIs(idDetail, languageCode string) ([]string, error) {
         return nil, err
     }
 
-    req.Header.Add("X-RapidAPI-Key", "3ad041d245msh9e23b1e8792896cp1fbc15jsn5e20851b7ca7")
+    req.Header.Add("X-RapidAPI-Key", "8c45aa97c7msh56eb8adeff6c7fbp15f018jsn948481d80bee")
     req.Header.Add("X-RapidAPI-Host", "booking-com13.p.rapidapi.com")
 
     res, err := http.DefaultClient.Do(req)
@@ -163,7 +163,7 @@ func GetFacilityTitles(idDetail, languageCode string) ([]string, error) {
         return nil, err
     }
 
-    req.Header.Add("X-RapidAPI-Key", "3ad041d245msh9e23b1e8792896cp1fbc15jsn5e20851b7ca7")
+    req.Header.Add("X-RapidAPI-Key", "8c45aa97c7msh56eb8adeff6c7fbp15f018jsn948481d80bee")
     req.Header.Add("X-RapidAPI-Host", "booking-com13.p.rapidapi.com")
 
     res, err := http.DefaultClient.Do(req)

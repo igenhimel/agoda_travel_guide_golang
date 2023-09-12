@@ -15,7 +15,7 @@
                     </div>
                     
                     <div class="row">
-                        <div class="col-7">
+                        <div class="col-md-7 col-12">
                             <div class="t-datepicker">
                                 <div class="t-check-in bg-white py-2"></div>
                                 <div class="t-check-out bg-white py-2"></div>

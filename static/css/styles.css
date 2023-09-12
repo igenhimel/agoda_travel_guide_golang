@@ -81,7 +81,7 @@
     left: 0;
     right: 0;
     margin: auto;
-    width: 30%;
+    max-width:350px;
     padding-left: 100px;
     padding-right: 100px;
     padding-top: 15px;
@@ -313,4 +313,17 @@
     content: "\2713"; /* Unicode checkmark character */
     margin-right: 10px;
     color: #007bff; /* Blue color for the marker */
+}
+
+.icon span i {
+  font-size: 15px;
+}
+
+
+.t-day-check-in,.t-day-check-out{
+    margin-left: 30px;
+}
+
+.bg-rent{
+    background-color: #013573;
 }

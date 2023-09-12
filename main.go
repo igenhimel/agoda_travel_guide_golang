@@ -3,14 +3,23 @@ package main
 import (
     _ "travel_guide/routers" // Import your routers package
     beego "github.com/beego/beego/v2/server/web"
+    "github.com/beego/beego/v2/server/web/session"
 )
+var globalSessions *session.Manager
 
 func main() {
     // Initialize Beego application
-    beego.BConfig.WebConfig.Session.SessionOn = true
-    beego.BConfig.WebConfig.Session.SessionProvider = "memory"
-    beego.BConfig.WebConfig.Session.SessionName = "gosessionid"
-    beego.BConfig.WebConfig.Session.SessionGCMaxLifetime = 3600 // Set your desired lifetime in seconds
+    sessionConfig := &session.ManagerConfig{
+        CookieName:      "sessionID",
+        EnableSetCookie: true,
+        Gclifetime:      3600,    // Session lifetime in seconds (1 hour)
+        Maxlifetime:     3600,    // Max session lifetime in seconds (1 hour)
+        Secure:          false,   // Set to true if using HTTPS
+        CookieLifeTime:  3600,    // Cookie lifetime in seconds (1 hour)
+        ProviderConfig:  "./tmp", // Path to store session files
+    }
+    globalSessions, _ := session.NewManager("memory", sessionConfig)
+    go globalSessions.GC()
 
     // Start the Beego application
     beego.Run()

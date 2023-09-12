@@ -56,72 +56,72 @@ $(document).ready(function() {
     },
   });
 
-  $(document).ready(function () {
-    var passengerDropdown = $(".passenger-dropdown");
+  var passengerDropdown = $(".passenger-dropdown");
 
-    // Function to update the #passenger-input value
-   // Function to update the #passenger-input value
-function updatePassengerInput() {
-    var adultsCount = parseInt($("#adults-count").text());
-    var seniorsCount = parseInt($("#seniors-count").text());
+  // Function to update the #passenger-input value
+  function updatePassengerInput() {
+      var adultsCount = parseInt($("#adults-count").text());
+      var seniorsCount = parseInt($("#seniors-count").text());
 
-    // Generate the string for the input field
-    var inputText = "";
+      // Ensure that adultsCount is always at least 1
+      if (adultsCount < 1) {
+          adultsCount = 1;
+          $("#adults-count").text(adultsCount);
+      }
 
-    if (adultsCount > 0) {
-        inputText += adultsCount + " Passengers" + (adultsCount !== 1 ? "s" : "");
-    }
+      // Generate the string for the input field
+      var inputText = "";
 
+      if (adultsCount > 0) {
+          inputText += adultsCount + " Passenger" + (adultsCount !== 1 ? "s" : "");
+      }
 
-    // Update the #passenger-input value
-    $("#passenger-input").val(inputText);
-}
+      // Update the #passenger-input value
+      $("#passenger-input").val(inputText);
+  }
 
+  // Toggle passenger dropdown on input field click
+  $("#passenger-input").click(function (e) {
+      e.stopPropagation(); // Prevent the click event from propagating to the document
+      passengerDropdown.toggleClass("open");
+  });
 
-    // Toggle passenger dropdown on input field click
-    $("#passenger-input").click(function (e) {
-        e.stopPropagation(); // Prevent the click event from propagating to the document
-        passengerDropdown.toggleClass("open");
-    });
+  // Increment and Decrement functions for adults
+  $("#increment-adults").click(function () {
+      var adultsCount = parseInt($("#adults-count").text());
+      $("#adults-count").text(adultsCount + 1);
+      updatePassengerInput(); // Update the input field
+  });
 
-    // Increment and Decrement functions for adults
-    $("#increment-adults").click(function () {
-        var adultsCount = parseInt($("#adults-count").text());
-        $("#adults-count").text(adultsCount + 1);
-        updatePassengerInput(); // Update the input field
-    });
+  $("#decrement-adults").click(function () {
+      var adultsCount = parseInt($("#adults-count").text());
+      if (adultsCount > 1) {
+          $("#adults-count").text(adultsCount - 1);
+      }
+      updatePassengerInput(); // Update the input field
+  });
 
-    $("#decrement-adults").click(function () {
-        var adultsCount = parseInt($("#adults-count").text());
-        if (adultsCount > 0) {
-            $("#adults-count").text(adultsCount - 1);
-            updatePassengerInput(); // Update the input field
-        }
-    });
+  // Increment and Decrement functions for seniors
+  $("#increment-seniors").click(function () {
+      var seniorsCount = parseInt($("#seniors-count").text());
+      $("#seniors-count").text(seniorsCount + 1);
+      updatePassengerInput(); // Update the input field
+  });
 
-    // Increment and Decrement functions for seniors
-    $("#increment-seniors").click(function () {
-        var seniorsCount = parseInt($("#seniors-count").text());
-        $("#seniors-count").text(seniorsCount + 1);
-        updatePassengerInput(); // Update the input field
-    });
+  $("#decrement-seniors").click(function () {
+      var seniorsCount = parseInt($("#seniors-count").text());
+      if (seniorsCount > 0) {
+          $("#seniors-count").text(seniorsCount - 1);
+      }
+      updatePassengerInput(); // Update the input field
+  });
 
-    $("#decrement-seniors").click(function () {
-        var seniorsCount = parseInt($("#seniors-count").text());
-        if (seniorsCount > 0) {
-            $("#seniors-count").text(seniorsCount - 1);
-            updatePassengerInput(); // Update the input field
-        }
-    });
-
-    // Close passenger dropdown when clicking outside
-    $(document).on('click', function (e) {
-        if (!passengerDropdown.is(e.target) && passengerDropdown.has(e.target).length === 0) {
-            passengerDropdown.removeClass("open");
-        }
-    });
-});
-
+  // Close passenger dropdown when clicking outside
+  $(document).on('click', function (e) {
+      if (!passengerDropdown.is(e.target) && passengerDropdown.has(e.target).length === 0) {
+          passengerDropdown.removeClass("open");
+      }
+  });
 //pass count
 
 

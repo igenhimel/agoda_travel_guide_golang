@@ -88,14 +88,14 @@
                                         type="button" id="search-button"><i class="fa-solid fa-users"></i></button>
                                 </div>
                                 
-                                    <input type="text" class="form-control py-3" id="passenger-input" placeholder="Passengers" readonly>
+                                    <input type="text" class="form-control py-3" id="passenger-input" placeholder="Passengers" readonly value="1 Passengers">
                                     <div class="passenger-dropdown">
                                         <div class="dropdown-menu">
                                             <div class="passenger-type">
                                                 <span class="label">Passengers</span>
                                                 <span class="float-right">
                                                     <span class="btn btn-outline-primary rounded-0" id="decrement-adults">-</span>
-                                                    <span class="count" id="adults-count">0</span>
+                                                    <span class="count" id="adults-count">1</span>
                                                     <span class="btn btn-outline-primary rounded-0" id="increment-adults">+</span>
                                                 </span>
                                             </div>

@@ -2,9 +2,8 @@ package controllers
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
-
+    "travel_guide/models"
 	"github.com/beego/beego/v2/server/web"
 )
 
@@ -12,74 +11,96 @@ type FlightController struct {
 	web.Controller
 }
 
-type FlightData struct {
-	CurrentPage int `json:"currentPage"`
-	Flight      struct {
-		FlightsCount int `json:"filteredFlightsCount"`
-		Data         []struct {
-			TravelPrices []struct {
-				Price struct {
-					Price struct {
-						Currency struct {
-							Code  string `json:"code"`
-						} `json:"currency"`
-						Value string `json:"value"`
-						Vat struct {
-							Value string `json:"value"`
-						} `json:"vat"`
-					} `json:"price"`
-				} `json:"price"`
-			} `json:"travelerPrices"`
-		} `json:"flights"`
-	} `json:"data"`
-}
-
-func (c *FlightController) Get() {
-	url := "https://booking-com13.p.rapidapi.com/flights/one-way?location_from=Dhaka%2C%20Bangladesh&location_to=New%20Delhi%2C%20India&departure_date=2023-09-15&page=1&country_flag=us&class=Business"
-
+func fetchFlightData(url string, ch chan<- models.FlightData) {
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
-		fmt.Println("Error creating request:", err)
+		ch <- models.FlightData{} // Send an empty FlightData on error
 		return
 	}
 
-	req.Header.Add("X-RapidAPI-Key", "3ad041d245msh9e23b1e8792896cp1fbc15jsn5e20851b7ca7")
+	req.Header.Add("X-RapidAPI-Key", "8c45aa97c7msh56eb8adeff6c7fbp15f018jsn948481d80bee")
 	req.Header.Add("X-RapidAPI-Host", "booking-com13.p.rapidapi.com")
 
 	client := &http.Client{}
 	res, err := client.Do(req)
 	if err != nil {
-		fmt.Println("Error making request:", err)
+		ch <- models.FlightData{} // Send an empty FlightData on error
 		return
 	}
 	defer res.Body.Close()
 
 	if res.StatusCode != http.StatusOK {
-		fmt.Printf("API request failed with status code: %d\n", res.StatusCode)
+		ch <- models.FlightData{} // Send an empty FlightData on non-OK status code
 		return
 	}
 
-	var responseData FlightData
+	var responseData models.FlightData
 
-	// Parse the JSON response into the responseData struct
 	if err := json.NewDecoder(res.Body).Decode(&responseData); err != nil {
-		fmt.Println("Error parsing JSON:", err)
+		ch <- models.FlightData{} // Send an empty FlightData on JSON parsing error
 		return
 	}
 
-	// Access and print the structure data
-	fmt.Printf("Current Page: %d\n", responseData.CurrentPage)
-	fmt.Printf("Filtered Flights Count: %d\n", responseData.Flight.FlightsCount)
+	ch <- responseData
+}
 
-	// Print data for each flight
-	for i, flight := range responseData.Flight.Data {
-		fmt.Printf("Flight %d:\n", i+1)
-		// Access and print data for traveler prices in each flight
-		for j, travelerPrice := range flight.TravelPrices {
-			fmt.Printf("Traveler Price %d:\n", j+1)
-			fmt.Printf("Currency Code: %s\n", travelerPrice.Price.Price.Currency.Code)
-			fmt.Printf("Price Value: %s\n", travelerPrice.Price.Price.Value)
-			fmt.Printf("VAT Value: %s\n", travelerPrice.Price.Price.Vat.Value)
-		}
+func (c *FlightController) Get() {
+   
+	source := c.GetString("location_from");
+	destination:= c.GetString("location_to");
+	departure_date := c.GetString("departure_date");
+	class := c.GetString("class")
+	return_date := c.GetString("return_date");
+
+	if source == "" || destination == "" || departure_date == "" || class == "" {
+		GlobalError = "Please Fill the all Required Field"
+        c.Redirect("/", 302)
+        return
 	}
+
+   
+    var url string;
+
+   if return_date == "" {
+    url = "https://booking-com13.p.rapidapi.com/flights/one-way?" +
+        "location_from=" + source +
+        "&location_to=" + destination +
+        "&departure_date=" + departure_date +
+        "&page=1&country_flag=us" +
+        "&class=" + class
+   }else {
+    url = "https://booking-com13.p.rapidapi.com/flights/return?" +
+        "location_from=" + source +
+        "&location_to=" + destination +
+        "&departure_date=" + departure_date +
+        "&return_date=" + return_date +
+        "&page=1&country_flag=us" +
+        "&class=" + class
+}
+
+
+	// Create a channel to receive flight data
+	ch := make(chan models.FlightData)
+
+	// Start a goroutine to fetch flight data
+	go fetchFlightData(url, ch)
+
+	// Process the received flight data
+	responseData := <-ch
+
+	if responseData.CurrentPage > 0 {
+		c.Data["CurrentPage"] = responseData.CurrentPage
+		c.Data["Flight"] = responseData.Flight
+		c.Data["travel_date"]=departure_date
+		if return_date!=""{
+			c.Data["return_date"]=return_date
+	} else {
+		// Handle the case where the request failed
+		// You can set appropriate error data or redirect to an error page
+	}
+
+	// Render the "flight.tpl" template
+	c.TplName = "flight/flight.tpl"
+	c.Render()
+}
 }

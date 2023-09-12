@@ -9,6 +9,11 @@ type MainController struct {
 }
 
 func (c *MainController) Get() {
+
+    if GlobalError != "" {
+        c.Data["Error"] = GlobalError
+        GlobalError = "" // Clear the error message after retrieval
+    }
   
     c.TplName = "index.tpl" // Use the name of your HTML template
 }

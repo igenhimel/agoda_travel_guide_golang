@@ -13,11 +13,7 @@ type HotelController struct {
     beego.Controller
 }
 
-type HotelData struct {
-    ImgURLs []string
-    Titles  []string
-    Prices  []string
-}
+var GlobalError string
 
 func (c *HotelController) Get() {
     // Get form data from the request
@@ -25,11 +21,18 @@ func (c *HotelController) Get() {
     checkIn := c.GetString("t-start")
     checkOut := c.GetString("t-end")
 
+    if destination == "" || checkIn=="" || checkOut =="" {
+        GlobalError = "Please enter the name of a country, city, airport, neighborhood, landmark, or property to proceed."
+        c.Redirect("/", 302)
+        return
+    }
+
     url := "https://booking-com13.p.rapidapi.com/stays/properties/list-v2" +
         "?location=" + destination +
         "&checkin_date=" + checkIn +
         "&checkout_date=" + checkOut +
         "&language_code=en-us&currency_code=USD"
+
 
     // Create an HTTP request
     req, err := http.NewRequest("GET", url, nil)
@@ -39,7 +42,7 @@ func (c *HotelController) Get() {
     }
 
     // Set headers required for the RapidAPI endpoint
-    req.Header.Add("X-RapidAPI-Key", "3ad041d245msh9e23b1e8792896cp1fbc15jsn5e20851b7ca7")
+    req.Header.Add("X-RapidAPI-Key", "8c45aa97c7msh56eb8adeff6c7fbp15f018jsn948481d80bee")
     req.Header.Add("X-RapidAPI-Host", "booking-com13.p.rapidapi.com")
 
     dataChannel := make(chan models.HotelInfo)
