@@ -11,7 +11,7 @@
           <div class="card h-100">
             <div class="img-card">
                 <img src="https://cf.bstatic.com{{ .BasicPropertyData.Photos.Main.Urls.ImgURL}}" class="card-img-top"
-                alt="Hollywood Sign on The Hill Lazy-loaded"  />
+                alt="Hollywood Sign on The Hill" loading="lazy" />
 
                 <span class="btn btn-light btn-money btn-price">From <i class="fa-solid fa-bangladeshi-taka-sign"></i> {{.PriceDisplayInfoIrene.DisplayPrice.AmountPerStay.AmountRounded}}</i></span>
                 <div class="btn-mores">
