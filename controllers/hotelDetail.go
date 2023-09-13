@@ -20,13 +20,16 @@ type HotelControllerDetails struct {
 }
 func (c *HotelControllerDetails) Get() {
     idDetail := c.GetString("IDDetail")
-    cleanedIdDetail := strings.ReplaceAll(idDetail, "es/", "")
-    cleanedIdDetail = strings.ReplaceAll(cleanedIdDetail, "-", " ")
-
-    // Capitalize the first letter of each word
+    parts := strings.Split(idDetail, "/")
+    lastPart := parts[len(parts)-1]
+        
+     // Replace "-" with " "
+    cleanedIdDetail := strings.ReplaceAll(lastPart, "-", " ")
+        
+     // Capitalize the first letter of each word
     words := strings.Fields(cleanedIdDetail)
     for i, word := range words {
-        words[i] = strings.Title(word)
+            words[i] = strings.Title(word)
     }
     cleanedIdDetail = strings.Join(words, " ")
     languageCode := "en-us"
