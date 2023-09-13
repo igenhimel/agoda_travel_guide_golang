@@ -12,6 +12,10 @@ type HotelInfo struct {
                     } `json:"highResJpegUrl"`
                 } `json:"main"`
             } `json:"photos"`
+            Location struct {
+                Address string `json:"address"`
+                City    string `json:"city"`
+            }`json:"location"`
         } `json:"basicPropertyData"`
 		DisplayName struct {
 			Title string `json:"text"`

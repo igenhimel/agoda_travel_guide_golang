@@ -31,7 +31,7 @@
                 <i class="fa-regular fa-star"></i>
                 683 Reviews
                 <h6>Sleeps 85</h6>
-                <a href="#" class="textstyle">Arizona > Lake Havasu City</a>
+                <a href="#" class="textstyle">{{.BasicPropertyData.Location.Address}} > {{.BasicPropertyData.Location.City}}</a>
                 <div class="text-end">
                   <a href="/search/hotel/details/?IDDetail={{.IDDetail | urlquery}}" class="btn btn-warning">View Availability</a>
                 </div>

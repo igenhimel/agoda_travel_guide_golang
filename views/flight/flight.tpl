@@ -49,7 +49,9 @@
                             <span class="currency-code text-danger lead fw-bold" style="vertical-align: middle;">
                                 <sub>{{$travelerPrice.Price.Price.Currency.Code}}</sub>
                                 <span class="fs-3" style="vertical-align: sub;">{{$travelerPrice.Price.Price.Value}}</span>
-                            </span>                            
+                              
+                            </span>   
+                            <p class="small text-muted">Average Price per passenger</p>                         
                             {{end}}
                         </div>
                         
